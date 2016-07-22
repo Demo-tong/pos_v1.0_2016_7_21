@@ -7,8 +7,16 @@ describe("printReceipt", function () {
       'I02-3.5',
       'I01-2'
     ]
+    let receiptString =  ["***<没钱赚商店>收据***",
+      "名称：雪碧，数量：3瓶，单价：3(元)，小计：6(元)",
+      "名称：苹果，数量：3.5斤，单价：5.5(元)，小计：19.25(元)",
+      "－－－－－－－－－－－－－－－－－－－－－",
+      "总计：25.25(元)",
+      "节省：3(元)",
+      "*************************************"
+    ]
 
-    expect(printReceipt(tags)).toEqual("Have done!");
+    expect(printReceipt(tags)).toEqual(receiptString);
   });
 });
 
@@ -385,7 +393,15 @@ describe("Print", function () {
 
     let total = 25.25;
     let savedTotal = 3;
+    let receiptString =  ["***<没钱赚商店>收据***",
+      "名称：雪碧，数量：3瓶，单价：3(元)，小计：6(元)",
+      "名称：苹果，数量：3.5斤，单价：5.5(元)，小计：19.25(元)", 
+      "－－－－－－－－－－－－－－－－－－－－－", 
+      "总计：25.25(元)", 
+      "节省：3(元)", 
+      "*************************************"
+    ]
 
-    expect(Print(total, savedTotal, savedItems)).toEqual("Print successfully!");
+    expect(Print(total, savedTotal, savedItems)).toEqual(receiptString);
   });
 });

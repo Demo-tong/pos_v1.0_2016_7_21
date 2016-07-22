@@ -13,8 +13,9 @@ function printReceipt(tags) {
   let savedItems = getSavedSubtotal(promotedItems);
   let total = getAfterSavedTotal(savedItems);
   let savedTotal = getSavedMoney(savedItems);
+  let receiptString = Print(total, savedTotal, savedItems);
 
-  return "Have done!";
+  return receiptString;
 }
 
 function generateBarcodes(tags) {
@@ -130,15 +131,21 @@ function getSavedMoney(savedItems) {
 }
 
 function Print(total, savedTotal, savedItems) {
-  console.log("***<没钱赚商店>收据***");
+  let receiptString = [];
+  receiptString.push("***<没钱赚商店>收据***");
   for (let i = 0; i < savedItems.length; ++i) {
-    console.log("名称：" + savedItems[i].name + "，数量：" + savedItems[i].amount + savedItems[i].unit +
-            "，单价：" + savedItems[i].price + "(元)，小计：" + savedItems[i].afterSavedSubtotal + "(元)");
+    receiptString.push("名称：" + savedItems[i].name + "，数量：" + savedItems[i].amount + savedItems[i].unit +
+            "，单价：" + savedItems[i].price + "(元)，小计：" + savedItems[i].afterSavedSubtotal + "(元)")
   }
 
-  console.log("－－－－－－－－－－－－－－－－－－－－－");
-  console.log("总计：" + total + "(元)\n" + "节省：" + savedTotal + "(元)");
-  console.log("************************************* ");
+  receiptString.push("－－－－－－－－－－－－－－－－－－－－－");
+  receiptString.push("总计：" + total + "(元)");
+  receiptString.push("节省：" + savedTotal + "(元)");
+  receiptString.push("*************************************");
 
-  return ("Print successfully!")
+  for (let item of receiptString) {
+    console.log(item);
+  }
+
+  return (receiptString);
 }
