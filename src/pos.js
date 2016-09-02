@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function printReceipt(tags){
   let allItems = loadAllItems();
